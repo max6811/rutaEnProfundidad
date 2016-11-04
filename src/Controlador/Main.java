@@ -7,7 +7,7 @@ package Controlador;
 
 /**
  *
- * @author nogayo
+ * @author max
  */
 public class Main {
     
