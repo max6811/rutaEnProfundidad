@@ -1,5 +1,5 @@
 /*
- * esta es la parte de la interfaz
+ * esta es la parte de la interfaz edwin
  */
 package Vista;
 
