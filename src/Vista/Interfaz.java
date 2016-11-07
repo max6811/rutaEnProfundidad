@@ -11,6 +11,8 @@ package Vista;
  */
 public class Interfaz extends javax.swing.JFrame {
 
+    private         String LugarInicio;
+    private String LugarMeta;
     /**
      * Creates new form Interfaz
      */
@@ -18,6 +20,7 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         //nombre de la ventana
         this.setTitle("LUGARES TURISTICOS");
+     
     }
 
     /**
@@ -55,6 +58,11 @@ public class Interfaz extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         Buscar.setText("BUSCAR");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         CANCELAR.setText(" CANCELAR");
         CANCELAR.addActionListener(new java.awt.event.ActionListener() {
@@ -218,21 +226,32 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void METAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_METAActionPerformed
+     LugarMeta=META.getSelectedItem().toString();
         // TODO add your handling code here:
     }//GEN-LAST:event_METAActionPerformed
 
     private void INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIOActionPerformed
         // TODO add your handling code here:
+        //System.out.println("item selected. " + INICIO.getSelectedItem().toString());
+
+        LugarInicio=INICIO.getSelectedItem().toString();
        
     }//GEN-LAST:event_INICIOActionPerformed
 
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_CANCELARActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+       TERMINAL.setText( "terminal funcionando exito  !!");
+       TERMINAL.setText(LugarInicio+""+LugarMeta);
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
