@@ -68,6 +68,7 @@ public class Main {
         v8.addVerticeVecino(v7);
         
         Grafo grafo = new Grafo();
+        // AQUI ES DONDE SE CAMBIAN EL NODO INICIO Y EL NODO FINAL, JUGAR CON ESTO..PRUEBEN
         ArrayList<String> res = grafo.Buscar(v1, v6);
         for (String imprime : res) {
             System.out.println(imprime + ", ");
