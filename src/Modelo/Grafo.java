@@ -64,6 +64,10 @@ public class Grafo{
                     for (Vertice nuevo : VerticeActual.getVerticesVecinos()) {
                         pila.push(nuevo);
                     }
+                }else{
+                    
+                       // res.remove(res.size()-1);
+                         
                 }
             }else{
                 //System.out.println(fin.getEtiqueta());

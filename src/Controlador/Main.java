@@ -69,7 +69,7 @@ public class Main {
         
         Grafo grafo = new Grafo();
         // AQUI ES DONDE SE CAMBIAN EL NODO INICIO Y EL NODO FINAL, JUGAR CON ESTO..PRUEBEN
-        ArrayList<String> res = grafo.Buscar(v2, v7);
+        ArrayList<String> res = grafo.Buscar(v8, v1);
         System.out.print("Ruta Solucion: ");
        for (String imprime : res) {
             System.out.print(imprime + ". ");
