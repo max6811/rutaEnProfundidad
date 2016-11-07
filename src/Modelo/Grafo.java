@@ -46,26 +46,28 @@ public class Grafo{
     
     public ArrayList<String> Buscar(Vertice inicio, Vertice fin){
     ArrayList<String> res = new ArrayList<>();
-    res.add(inicio.getEtiqueta());
+    //res.add(inicio.getEtiqueta());
     Stack<Vertice> pila = new Stack<>();
     if(inicio != null){
     
     pila.push(inicio);
         while(pila.size()>0){
             Vertice VerticeActual = pila.pop();
-            res.add(VerticeActual.getEtiqueta());
+            //res.add(VerticeActual.getEtiqueta());
             if(!VerticeActual.equals(fin)){
                 if(!VerticeActual.getVisitado()){
             
                     VerticeActual.setVisitado(true);
-                    System.out.println(VerticeActual.getEtiqueta());
+                    //System.out.println(VerticeActual.getEtiqueta());
+                    res.add(VerticeActual.getEtiqueta());
                     
                     for (Vertice nuevo : VerticeActual.getVerticesVecinos()) {
                         pila.push(nuevo);
                     }
                 }
             }else{
-                System.out.print("ruta encontrada");
+                //System.out.println(fin.getEtiqueta());
+                res.add(fin.getEtiqueta());
                 return res;
             }
         }
