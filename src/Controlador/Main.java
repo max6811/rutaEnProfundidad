@@ -29,14 +29,14 @@ public class Main {
           System.out.println(""+prueba.get(2));
         **/
         
-        Vertice v1 = new Vertice("uno");    
-        Vertice v2 = new Vertice("dos");
-        Vertice v3 = new Vertice("tres");
-        Vertice v4 = new Vertice("cuatro");
-        Vertice v5 = new Vertice("cinco");
-        Vertice v6 = new Vertice("seis");
-        Vertice v7 = new Vertice("siete");
-        Vertice v8 = new Vertice("ocho");
+        Vertice v1 = new Vertice("1");    
+        Vertice v2 = new Vertice("2");
+        Vertice v3 = new Vertice("3");
+        Vertice v4 = new Vertice("4");
+        Vertice v5 = new Vertice("5");
+        Vertice v6 = new Vertice("6");
+        Vertice v7 = new Vertice("7");
+        Vertice v8 = new Vertice("8");
 
         
         v1.insertarVecino(new Arista(v1, v2));
@@ -68,7 +68,7 @@ public class Main {
         v8.addVerticeVecino(v7);
         
         Grafo grafo = new Grafo();
-        ArrayList<String> res = grafo.Buscar(v1, v8);
+        ArrayList<String> res = grafo.Buscar(v1, v6);
         for (String imprime : res) {
             System.out.println(imprime + ", ");
         }

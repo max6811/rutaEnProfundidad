@@ -21,6 +21,7 @@ public class Vertice
     {
 	this.etiqueta = etiqueta;
 	this.vecindad = new ArrayList<Arista>();
+        this.ListaVecinos = new ArrayList<Vertice>();
         this.visitado = false;
     }
     public boolean getVisitado(){
@@ -140,9 +141,9 @@ public class Vertice
     {
 	return new ArrayList<Arista>(this.vecindad);
     }
-    public void addVerticeVecino(Vertice Nuevo)
-    {
-	ListaVecinos.add(Nuevo);
+    public void addVerticeVecino(Vertice nuevo)
+    {        
+           ListaVecinos.add(nuevo);
     }
     public ArrayList<Vertice> getVerticesVecinos()
     {
