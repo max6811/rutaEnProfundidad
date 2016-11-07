@@ -3,10 +3,77 @@
  */
 package Controlador;
 
+import Modelo.Arista;
+import Modelo.Grafo;
+import Modelo.Vertice;
+import java.util.ArrayList;
+
 /**
  *
  * @author max
  */
 public class Main {
+
+    public Main() {
+    }
     
+    public static void main(String[] arg)
+    {
+        /**
+           ArrayList<String> prueba = new ArrayList<>();
+          prueba.add("hola");
+          prueba.add("como");
+          prueba.add("estas");
+          
+          System.out.println(""+prueba.size());
+          System.out.println(""+prueba.get(2));
+        **/
+        
+        Vertice v1 = new Vertice("uno");    
+        Vertice v2 = new Vertice("dos");
+        Vertice v3 = new Vertice("tres");
+        Vertice v4 = new Vertice("cuatro");
+        Vertice v5 = new Vertice("cinco");
+        Vertice v6 = new Vertice("seis");
+        Vertice v7 = new Vertice("siete");
+        Vertice v8 = new Vertice("ocho");
+
+        
+        v1.insertarVecino(new Arista(v1, v2));
+        v1.insertarVecino(new Arista(v1, v3));
+        v1.insertarVecino(new Arista(v1, v4));
+        v1.insertarVecino(new Arista(v1, v5));
+        v1.addVerticeVecino(v2);
+        v1.addVerticeVecino(v3);
+        v1.addVerticeVecino(v4);
+        v1.addVerticeVecino(v5);
+        //v2.insertarVecino(new Arista(v1, v2));
+        v2.addVerticeVecino(v1);
+        v3.insertarVecino(new Arista(v1, v3));
+        v3.addVerticeVecino(v1);
+        v3.addVerticeVecino(v8);
+        v4.insertarVecino(new Arista(v4, v7));
+        v4.addVerticeVecino(v1);
+        v4.addVerticeVecino(v7);
+        v5.insertarVecino(new Arista(v5, v6));
+        v5.addVerticeVecino(v1);
+        v5.addVerticeVecino(v6);
+        //v6.insertarVecino(new Arista(v5, v6));
+        v6.addVerticeVecino(v5);
+        v7.insertarVecino(new Arista(v7, v8));
+        v7.addVerticeVecino(v4);
+        v7.addVerticeVecino(v8);
+        //v8.insertarVecino(new Arista(v7, v8));
+        v8.addVerticeVecino(v3);
+        v8.addVerticeVecino(v7);
+        
+        Grafo grafo = new Grafo();
+        ArrayList<String> res = grafo.Buscar(v1, v8);
+        for (String imprime : res) {
+            System.out.println(imprime + ", ");
+        }
+        
+    
+    }
+
 }
