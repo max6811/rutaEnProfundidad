@@ -44,14 +44,18 @@ public class Grafo{
 	
     }
     
-    public ArrayList<String> Buscar(Vertice inicio, Vertice fin){
-    ArrayList<String> res = new ArrayList<>();
+    public Respuesta Buscar(Vertice inicio, Vertice fin){
+    long startTime = System.currentTimeMillis();    //iniciamos la busqueda
+    Respuesta res = new Respuesta();
     //res.add(inicio.getEtiqueta());
     Stack<Vertice> pila = new Stack<>();
     if(inicio != null){
     
     pila.push(inicio);
         while(pila.size()>0){
+            long endTime = System.currentTimeMillis(); //termina la busqueda
+            res.setTiempoTrans(endTime-startTime);
+            
             Vertice VerticeActual = pila.pop();
             //res.add(VerticeActual.getEtiqueta());
             if(!VerticeActual.equals(fin)){
@@ -59,7 +63,7 @@ public class Grafo{
             
                     VerticeActual.setVisitado(true);
                     //System.out.println(VerticeActual.getEtiqueta());
-                    res.add(VerticeActual.getEtiqueta());
+                    res.addRuta(VerticeActual.getEtiqueta());
                     
                     for (Vertice nuevo : VerticeActual.getVerticesVecinos()) {
                         pila.push(nuevo);
@@ -71,7 +75,7 @@ public class Grafo{
                 }
             }else{
                 //System.out.println(fin.getEtiqueta());
-                res.add(fin.getEtiqueta());
+                res.addRuta(fin.getEtiqueta());
                 return res;
             }
         }

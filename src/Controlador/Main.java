@@ -5,6 +5,7 @@ package Controlador;
 
 import Modelo.Arista;
 import Modelo.Grafo;
+import Modelo.Respuesta;
 import Modelo.Vertice;
 import java.util.ArrayList;
 
@@ -18,17 +19,7 @@ public class Main {
     }
     
     public static void main(String[] arg)
-    {
-        /**
-           ArrayList<String> prueba = new ArrayList<>();
-          prueba.add("hola");
-          prueba.add("como");
-          prueba.add("estas");
-          
-          System.out.println(""+prueba.size());
-          System.out.println(""+prueba.get(2));
-        **/
-        
+    {  
         Vertice v1 = new Vertice("1");    
         Vertice v2 = new Vertice("2");
         Vertice v3 = new Vertice("3");
@@ -69,11 +60,15 @@ public class Main {
         
         Grafo grafo = new Grafo();
         // AQUI ES DONDE SE CAMBIAN EL NODO INICIO Y EL NODO FINAL, JUGAR CON ESTO..PRUEBEN
-        ArrayList<String> res = grafo.Buscar(v8, v1);
+        Respuesta res = grafo.Buscar(v8, v1);
         System.out.print("Ruta Solucion: ");
-       for (String imprime : res) {
+       for (String imprime : res.getrutas()) {
             System.out.print(imprime + ". ");
        }
+       System.out.println("");
+       
+       System.out.println("Nodos Visitados: "+ res.getNodosVisitados());
+       System.out.println("tiempo Transcurrido: "+ res.getTiempoTrans()+ " ms.");
         
     
     }
