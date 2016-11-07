@@ -210,7 +210,7 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIOActionPerformed
         // TODO add your handling code here:
-        INICIO.
+       
     }//GEN-LAST:event_INICIOActionPerformed
 
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
