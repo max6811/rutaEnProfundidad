@@ -11,6 +11,8 @@ package Vista;
  */
 public class Interfaz extends javax.swing.JFrame {
 
+    private         String LugarInicio;
+    private String LugarMeta;
     /**
      * Creates new form Interfaz
      */
@@ -18,6 +20,7 @@ public class Interfaz extends javax.swing.JFrame {
         initComponents();
         //nombre de la ventana
         this.setTitle("LUGARES TURISTICOS");
+     
     }
 
     /**
@@ -55,6 +58,11 @@ public class Interfaz extends javax.swing.JFrame {
         bindingGroup.addBinding(binding);
 
         Buscar.setText("BUSCAR");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         CANCELAR.setText(" CANCELAR");
         CANCELAR.addActionListener(new java.awt.event.ActionListener() {
@@ -63,14 +71,14 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        INICIO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Torotoro National Park", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
+        INICIO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
         INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 INICIOActionPerformed(evt);
             }
         });
 
-        META.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Torotoro National Park", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
+        META.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
         META.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 METAActionPerformed(evt);
@@ -119,8 +127,13 @@ public class Interfaz extends javax.swing.JFrame {
         FONDO.setFocusPainted(false);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/Nro Lugares Turisticos.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/nrroLugaresTuristicos.jpg"))); // NOI18N
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,7 +164,7 @@ public class Interfaz extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(FONDO, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -213,17 +226,32 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void METAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_METAActionPerformed
+     LugarMeta=META.getSelectedItem().toString();
         // TODO add your handling code here:
     }//GEN-LAST:event_METAActionPerformed
 
     private void INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIOActionPerformed
         // TODO add your handling code here:
+        //System.out.println("item selected. " + INICIO.getSelectedItem().toString());
+
+        LugarInicio=INICIO.getSelectedItem().toString();
        
     }//GEN-LAST:event_INICIOActionPerformed
 
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_CANCELARActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+       TERMINAL.setText( "terminal funcionando exito  !!");
+       TERMINAL.setText(LugarInicio+""+LugarMeta);
+    }//GEN-LAST:event_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
