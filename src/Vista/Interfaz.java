@@ -5,22 +5,32 @@
  */
 package Vista;
 
+import Modelo.Arista;
+import Modelo.Grafo;
+import Modelo.Respuesta;
+import Modelo.Vertice;
+
 /**
  *
  * @author EDWIN
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    private         String LugarInicio;
+    private String LugarInicio;
     private String LugarMeta;
     /**
      * Creates new form Interfaz
      */
+    String inicio;
+    String meta;
     public Interfaz() {
+        inicio="";
+        meta="";
         initComponents();
         //nombre de la ventana
+        
         this.setTitle("LUGARES TURISTICOS");
-     
+        //llenarCampos();
     }
 
     /**
@@ -71,22 +81,24 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        INICIO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
+        INICIO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
         INICIO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 INICIOActionPerformed(evt);
             }
         });
 
-        META.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
+        META.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Cristo de la Concordia", "Laguna Angostura", "Plaza 14 de septiembre", "Parque de la Familia", "Parque de Dinosaurios", "Museo Arqueologico", "Liriuni", "El Poncho Quillacollo" }));
         META.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 METAActionPerformed(evt);
             }
         });
 
-        label1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        label1.setText(" INICIO....");
+        label1.setBackground(new java.awt.Color(0, 51, 51));
+        label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label1.setForeground(new java.awt.Color(255, 0, 51));
+        label1.setText(" INICIO");
 
         label2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         label2.setEnabled(false);
@@ -94,8 +106,10 @@ public class Interfaz extends javax.swing.JFrame {
         label2.setName(""); // NOI18N
         label2.setText("Busqueda en Profundidad");
 
-        label3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        label3.setText(" META....");
+        label3.setBackground(new java.awt.Color(0, 51, 51));
+        label3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label3.setForeground(new java.awt.Color(255, 0, 51));
+        label3.setText(" META");
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -122,12 +136,16 @@ public class Interfaz extends javax.swing.JFrame {
 
         FONDO.setBackground(new java.awt.Color(102, 102, 255));
         FONDO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/LUGARES TURISTICOS.jpg"))); // NOI18N
-        FONDO.setText("jButton1");
         FONDO.setBorderPainted(false);
         FONDO.setFocusPainted(false);
+        FONDO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FONDOActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 102, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/nrroLugaresTuristicos.jpg"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGES/lugarTuristico.png"))); // NOI18N
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,83 +157,100 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLayeredPane1)
-                        .addGap(537, 537, 537))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(FONDO, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                                        .addComponent(INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(META, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(INICIO, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                                .addGap(49, 49, 49)
+                                                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(51, 51, 51)
+                                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(33, 33, 33)
+                                                .addComponent(CANCELAR, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(26, 26, 26))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(META, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(FONDO, javax.swing.GroupLayout.PREFERRED_SIZE, 598, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(75, 75, 75)
-                                        .addComponent(CANCELAR, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane2))))
-                        .addGap(18, 18, 18))))
+                                .addContainerGap()
+                                .addComponent(jLayeredPane1)))
+                        .addGap(628, 628, 628))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(META, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CANCELAR, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(FONDO)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(INICIO, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7)
+                                .addComponent(META, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FONDO))
+                        .addGap(9, 9, 9)))
                 .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("LUGARES TURISTICOS");
@@ -225,17 +260,28 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void METAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_METAActionPerformed
-     LugarMeta=META.getSelectedItem().toString();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void FONDOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FONDOActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FONDOActionPerformed
+
+    private void METAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_METAActionPerformed
+        LugarMeta=META.getSelectedItem().toString();
+        // TODO add your handling code here:
+         meta = String.valueOf(META.getSelectedIndex()).trim();
+         System.out.println(META.getSelectedIndex());
     }//GEN-LAST:event_METAActionPerformed
 
     private void INICIOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_INICIOActionPerformed
         // TODO add your handling code here:
-        //System.out.println("item selected. " + INICIO.getSelectedItem().toString());
-
         LugarInicio=INICIO.getSelectedItem().toString();
-       
+        //System.out.println("item selected. " + INICIO.getSelectedItem().toString());
+        inicio = String.valueOf(INICIO.getSelectedIndex()).trim();
+         System.out.println(INICIO.getSelectedIndex());
+
     }//GEN-LAST:event_INICIOActionPerformed
 
     private void CANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CANCELARActionPerformed
@@ -243,14 +289,133 @@ public class Interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_CANCELARActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
-       TERMINAL.setText( "terminal funcionando exito  !!");
-       TERMINAL.setText(LugarInicio+""+LugarMeta);
+        TERMINAL.setText("");
+        TERMINAL.append( "    Terminal Funcionando con Exito!!"+"\n"+"\n");
+        TERMINAL.append("Lugar Inicio:  "+LugarInicio+"\n"+"Lugar Final:  "+LugarMeta +"\n");
+        
+    //////////////////////////7
+    Vertice v1 = new Vertice("1");    
+        Vertice v2 = new Vertice("2");
+        Vertice v3 = new Vertice("3");
+        Vertice v4 = new Vertice("4");
+        Vertice v5 = new Vertice("5");
+        Vertice v6 = new Vertice("6");
+        Vertice v7 = new Vertice("7");
+        Vertice v8 = new Vertice("8");
+
+        
+        v1.insertarVecino(new Arista(v1, v2));
+        v1.insertarVecino(new Arista(v1, v3));
+        v1.insertarVecino(new Arista(v1, v4));
+        v1.insertarVecino(new Arista(v1, v5));
+        v1.addVerticeVecino(v2);
+        v1.addVerticeVecino(v3);
+        v1.addVerticeVecino(v4);
+        v1.addVerticeVecino(v5);
+        //v2.insertarVecino(new Arista(v1, v2));
+        v2.addVerticeVecino(v1);
+        v3.insertarVecino(new Arista(v1, v3));
+        v3.addVerticeVecino(v1);
+        v3.addVerticeVecino(v8);
+        v4.insertarVecino(new Arista(v4, v7));
+        v4.addVerticeVecino(v1);
+        v4.addVerticeVecino(v7);
+        v5.insertarVecino(new Arista(v5, v6));
+        v5.addVerticeVecino(v1);
+        v5.addVerticeVecino(v6);
+        //v6.insertarVecino(new Arista(v5, v6));
+        v6.addVerticeVecino(v5);
+        v7.insertarVecino(new Arista(v7, v8));
+        v7.addVerticeVecino(v4);
+        v7.addVerticeVecino(v8);
+        //v8.insertarVecino(new Arista(v7, v8));
+        v8.addVerticeVecino(v3);
+        v8.addVerticeVecino(v7);
+        
+     // Grafo grafo = new Grafo();
+      //System.out.println("tiempo Transcurrido: "+ " ms.");
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v1,v2);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v1,v3);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v1,v4);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v1,v5);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v1,v6);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v1,v7);}
+       if(inicio.equals(v1.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v1,v8);}
+       
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v2,v1);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v2,v3);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v2,v4);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v2,v5);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v2,v6);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v2,v7);}
+       if(inicio.equals(v2.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v2,v8);}
+       
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v3,v1);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v3,v2);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v3,v4);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v3,v5);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v3,v6);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v3,v7);}
+       if(inicio.equals(v3.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v3,v8);}
+       
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v4,v1);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v4,v2);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v4,v3);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v4,v5);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v4,v6);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v4,v7);}
+       if(inicio.equals(v4.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v4,v8);}
+       
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v5,v1);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v5,v2);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v5,v3);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v5,v4);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v5,v6);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v5,v7);}
+       if(inicio.equals(v5.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v5,v8);}
+       
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v6,v1);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v6,v2);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v6,v3);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v6,v4);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v6,v5);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v6,v7);}
+       if(inicio.equals(v6.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v6,v8);}
+       
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v7,v1);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v7,v2);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v7,v3);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v7,v4);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v7,v5);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v7,v6);}
+       if(inicio.equals(v7.getEtiqueta()) && meta.equals(v8.getEtiqueta())){ruteo(v7,v8);}
+       
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v1.getEtiqueta())){ruteo(v8,v1);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v2.getEtiqueta())){ruteo(v8,v2);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v3.getEtiqueta())){ruteo(v8,v3);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v4.getEtiqueta())){ruteo(v8,v4);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v5.getEtiqueta())){ruteo(v8,v5);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v6.getEtiqueta())){ruteo(v8,v6);}
+       if(inicio.equals(v8.getEtiqueta()) && meta.equals(v7.getEtiqueta())){ruteo(v8,v7);} 
+    }
+       
+       private void ruteo(Vertice vi,Vertice vf){
+        Grafo grafo = new Grafo();
+           Respuesta res = grafo.Buscar(vi, vf);
+        System.out.print("Ruta Solucion: ");
+        TERMINAL.append("Ruta Solucion:  ");
+         for (String imprime : res.getrutas()) {
+            System.out.println(imprime + ". ");
+            TERMINAL.append(imprime + " - ");
+         }
+           System.out.println("");
+           TERMINAL.append("\n");
+       
+           TERMINAL.append("Nodos Visitados:  "+ res.getNodosVisitados()+"\n");
+           TERMINAL.append("tiempo Transcurrido:  "+ res.getTiempoTrans()+ " ms."+"\n");
+        
     }//GEN-LAST:event_BuscarActionPerformed
 
     /**
